@@ -6,13 +6,13 @@ import {
 } from 'react-native';
 
 type CustomProps = {
-  styles?: RNTextStyleProps;
+  style?: RNTextStyleProps;
 };
 
 type TextProps = CustomProps & RNTextProps;
 
-const Text: React.FC<TextProps> = ({children, styles}) => {
-  return <RNText style={styles}>{children}</RNText>;
+const Text: React.FC<TextProps> = ({children, style}) => {
+  return <RNText style={style}>{children}</RNText>;
 };
 
 export default Text;
