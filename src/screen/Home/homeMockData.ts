@@ -1,4 +1,9 @@
 import PlaceholderImage from 'asset/image/placeholder.jpg';
+import MiamiImage from 'asset/image/miami.jpg';
+import NewYorkImage from 'asset/image/new-york.jpg';
+import MontrealImage from 'asset/image/montreal.jpg';
+import VancouverImage from 'asset/image/vancouver.jpg';
+import TorontoImage from 'asset/image/toronto.jpg';
 
 const homeMockData = {
   sections: {
@@ -42,28 +47,28 @@ const homeMockData = {
       places: [
         {
           id: 1,
-          image: PlaceholderImage,
+          image: MiamiImage,
           title: 'Miami',
         },
         {
           id: 2,
-          image: PlaceholderImage,
+          image: NewYorkImage,
           title: 'New York',
           imageLabel: 'New',
         },
         {
           id: 3,
-          image: PlaceholderImage,
+          image: MontrealImage,
           title: 'Montreal',
         },
         {
           id: 4,
-          image: PlaceholderImage,
-          title: 'Vancourver',
+          image: VancouverImage,
+          title: 'Vancouver',
         },
         {
           id: 1,
-          image: PlaceholderImage,
+          image: TorontoImage,
           title: 'Toronto',
         },
       ],

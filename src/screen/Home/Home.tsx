@@ -1,5 +1,11 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, FlatList, View} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  FlatList,
+  View,
+  ScrollView,
+} from 'react-native';
 
 import Text from 'component/base/Text';
 
@@ -7,6 +13,7 @@ import mockData from './homeMockData';
 
 import SectionHeader from './component/SectionHeader';
 import PlaceCard from './component/PlaceCard';
+import CityCard from './component/CityCard';
 
 const Home: React.FC = () => {
   return (
@@ -19,8 +26,8 @@ const Home: React.FC = () => {
               <Text style={styles.searchPlaceholder}>Try 'Boston'</Text>
             </View>
             <SectionHeader
-              title="Find your getaway"
-              description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
+              title={mockData.sections.placeCtas.title}
+              description={mockData.sections.placeCtas.description}
               style={styles.bottomSpacing}
             />
           </>
@@ -35,6 +42,22 @@ const Home: React.FC = () => {
           />
         )}
         data={mockData.sections.placeCtas.places}
+        ListFooterComponent={
+          <>
+            <Text style={{fontSize: 24, lineHeight: 29, marginBottom: 12}}>
+              {mockData.sections.cityCtas.title}
+            </Text>
+            <ScrollView horizontal style={{paddingBottom: 16}}>
+              {mockData.sections.cityCtas.places.map(city => (
+                <CityCard
+                  image={city.image}
+                  name={city.title}
+                  style={styles.rightSpacing}
+                />
+              ))}
+            </ScrollView>
+          </>
+        }
       />
     </SafeAreaView>
   );
@@ -49,6 +72,9 @@ const styles = StyleSheet.create({
   },
   bottomSpacing: {
     marginBottom: 16,
+  },
+  rightSpacing: {
+    marginRight: 24,
   },
   searchPlaceholder: {
     fontSize: 16,
