@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Image, View, StyleSheet} from 'react-native';
 
-import Text from '../../../../component/base/Text';
+import Text from 'component/base/Text';
 
-import Asset1 from '../../../../asset/image/place-1.jpg';
+import Asset1 from 'asset/image/place-1.jpg';
 
 type PlaceCtaProps = {
   label: string;

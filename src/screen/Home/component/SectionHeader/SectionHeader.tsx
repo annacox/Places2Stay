@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Text from '../../../../component/base/Text';
+import Text from 'component/base/Text';
 
 type SectionHeaderProps = {
   title: string;

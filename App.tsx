@@ -11,7 +11,7 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 
-import Text from './src/component/base/Text';
+import Text from 'component/base/Text';
 
 const App: React.FC = () => {
   return (
