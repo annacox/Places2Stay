@@ -1,7 +1,9 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View} from 'react-native';
+import {SafeAreaView, StyleSheet, FlatList, View} from 'react-native';
 
 import Text from 'component/base/Text';
+
+import mockData from './homeMockData';
 
 import SectionHeader from './component/SectionHeader';
 import PlaceCard from './component/PlaceCard';
@@ -11,46 +13,31 @@ type SectionHeaderProps = {};
 const Home: React.FC<SectionHeaderProps> = () => {
   return (
     <SafeAreaView>
-      <ScrollView style={styles.container}>
-        <View style={[styles.searchContainer, styles.bottomSpacing]}>
-          <Text style={styles.searchPlaceholder}>Try 'Boston'</Text>
-        </View>
-        <SectionHeader
-          title="Find your getaway"
-          description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
-          style={styles.bottomSpacing}
-        />
-        <PlaceCard
-          label="From $126"
-          address="408 St. Jacques | 1 Br"
-          location="Old Montreal, Montreal"
-          style={styles.bottomSpacing}
-        />
-        <PlaceCard
-          label="From $126"
-          address="408 St. Jacques | 1 Br"
-          location="Old Montreal, Montreal"
-          style={styles.bottomSpacing}
-        />
-        <PlaceCard
-          label="From $126"
-          address="408 St. Jacques | 1 Br"
-          location="Old Montreal, Montreal"
-          style={styles.bottomSpacing}
-        />
-        <PlaceCard
-          label="From $126"
-          address="408 St. Jacques | 1 Br"
-          location="Old Montreal, Montreal"
-          style={styles.bottomSpacing}
-        />
-        <PlaceCard
-          label="From $126"
-          address="408 St. Jacques | 1 Br"
-          location="Old Montreal, Montreal"
-          style={styles.bottomSpacing}
-        />
-      </ScrollView>
+      <FlatList
+        style={styles.container}
+        ListHeaderComponent={
+          <>
+            <View style={[styles.searchContainer, styles.bottomSpacing]}>
+              <Text style={styles.searchPlaceholder}>Try 'Boston'</Text>
+            </View>
+            <SectionHeader
+              title="Find your getaway"
+              description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
+              style={styles.bottomSpacing}
+            />
+          </>
+        }
+        renderItem={({item}) => (
+          <PlaceCard
+            image={item.image}
+            label={item.imageLabel}
+            address={item.title}
+            location={item.location}
+            style={styles.bottomSpacing}
+          />
+        )}
+        data={mockData.sections.placeCtas.places}
+      />
     </SafeAreaView>
   );
 };

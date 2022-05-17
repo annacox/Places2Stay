@@ -1,11 +1,17 @@
 import * as React from 'react';
-import {Image, View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
+import {
+  Image,
+  View,
+  StyleSheet,
+  StyleProp,
+  ViewStyle,
+  ImageSourcePropType,
+} from 'react-native';
 
 import Text from 'component/base/Text';
 
-import Asset1 from 'asset/image/place-1.jpg';
-
 type PlaceCardProps = {
+  image: ImageSourcePropType;
   label: string;
   address: string;
   location: string;
@@ -13,6 +19,7 @@ type PlaceCardProps = {
 };
 
 const PlaceCard: React.FC<PlaceCardProps> = ({
+  image,
   label,
   address,
   location,
@@ -24,7 +31,7 @@ const PlaceCard: React.FC<PlaceCardProps> = ({
         <View style={styles.label}>
           <Text>{label}</Text>
         </View>
-        <Image source={Asset1} style={styles.image} />
+        <Image source={image} style={styles.image} />
       </View>
 
       <Text style={styles.address}>{address}</Text>
