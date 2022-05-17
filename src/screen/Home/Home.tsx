@@ -4,7 +4,7 @@ import {SafeAreaView, StyleSheet, ScrollView, View} from 'react-native';
 import Text from 'component/base/Text';
 
 import SectionHeader from './component/SectionHeader';
-import PlaceCta from './component/PlaceCta';
+import PlaceCard from './component/PlaceCard';
 
 type SectionHeaderProps = {};
 
@@ -20,31 +20,31 @@ const Home: React.FC<SectionHeaderProps> = () => {
           description="Our spaces are designed for comfort - whether you are working, relaxing, or craving some spaces"
           style={styles.bottomSpacing}
         />
-        <PlaceCta
+        <PlaceCard
           label="From $126"
           address="408 St. Jacques | 1 Br"
           location="Old Montreal, Montreal"
           style={styles.bottomSpacing}
         />
-        <PlaceCta
+        <PlaceCard
           label="From $126"
           address="408 St. Jacques | 1 Br"
           location="Old Montreal, Montreal"
           style={styles.bottomSpacing}
         />
-        <PlaceCta
+        <PlaceCard
           label="From $126"
           address="408 St. Jacques | 1 Br"
           location="Old Montreal, Montreal"
           style={styles.bottomSpacing}
         />
-        <PlaceCta
+        <PlaceCard
           label="From $126"
           address="408 St. Jacques | 1 Br"
           location="Old Montreal, Montreal"
           style={styles.bottomSpacing}
         />
-        <PlaceCta
+        <PlaceCard
           label="From $126"
           address="408 St. Jacques | 1 Br"
           location="Old Montreal, Montreal"

@@ -5,14 +5,14 @@ import Text from 'component/base/Text';
 
 import Asset1 from 'asset/image/place-1.jpg';
 
-type PlaceCtaProps = {
+type PlaceCardProps = {
   label: string;
   address: string;
   location: string;
   style?: StyleProp<ViewStyle>;
 };
 
-const PlaceCta: React.FC<PlaceCtaProps> = ({
+const PlaceCard: React.FC<PlaceCardProps> = ({
   label,
   address,
   location,
@@ -33,7 +33,7 @@ const PlaceCta: React.FC<PlaceCtaProps> = ({
   );
 };
 
-export default PlaceCta;
+export default PlaceCard;
 
 const styles = StyleSheet.create({
   imageContainer: {
