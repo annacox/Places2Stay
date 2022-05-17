@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, View} from 'react-native';
 
 import Text from 'component/base/Text';
 
@@ -11,7 +11,7 @@ type SectionHeaderProps = {};
 const Home: React.FC<SectionHeaderProps> = () => {
   return (
     <SafeAreaView>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         <View style={[styles.searchContainer, styles.bottomSpacing]}>
           <Text style={styles.searchPlaceholder}>Try 'Boston'</Text>
         </View>
@@ -32,7 +32,25 @@ const Home: React.FC<SectionHeaderProps> = () => {
           location="Old Montreal, Montreal"
           style={styles.bottomSpacing}
         />
-      </View>
+        <PlaceCta
+          label="From $126"
+          address="408 St. Jacques | 1 Br"
+          location="Old Montreal, Montreal"
+          style={styles.bottomSpacing}
+        />
+        <PlaceCta
+          label="From $126"
+          address="408 St. Jacques | 1 Br"
+          location="Old Montreal, Montreal"
+          style={styles.bottomSpacing}
+        />
+        <PlaceCta
+          label="From $126"
+          address="408 St. Jacques | 1 Br"
+          location="Old Montreal, Montreal"
+          style={styles.bottomSpacing}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };
@@ -41,8 +59,8 @@ export default Home;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 24,
-    marginTop: 16,
+    paddingHorizontal: 24,
+    paddingTop: 16,
   },
   bottomSpacing: {
     marginBottom: 16,
