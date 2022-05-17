@@ -67,7 +67,7 @@ const homeMockData = {
           title: 'Vancouver',
         },
         {
-          id: 1,
+          id: 5,
           image: TorontoImage,
           title: 'Toronto',
         },

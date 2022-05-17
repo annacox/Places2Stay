@@ -50,6 +50,7 @@ const Home: React.FC = () => {
             <ScrollView horizontal style={{paddingBottom: 16}}>
               {mockData.sections.cityCtas.places.map(city => (
                 <CityCard
+                  key={city.id}
                   image={city.image}
                   name={city.title}
                   style={styles.rightSpacing}
