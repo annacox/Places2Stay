@@ -8,9 +8,7 @@ import mockData from './homeMockData';
 import SectionHeader from './component/SectionHeader';
 import PlaceCard from './component/PlaceCard';
 
-type SectionHeaderProps = {};
-
-const Home: React.FC<SectionHeaderProps> = () => {
+const Home: React.FC = () => {
   return (
     <SafeAreaView>
       <FlatList
