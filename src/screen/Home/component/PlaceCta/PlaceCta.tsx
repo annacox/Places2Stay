@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, StyleProp, ViewStyle} from 'react-native';
 
 import Text from 'component/base/Text';
 
@@ -9,11 +9,17 @@ type PlaceCtaProps = {
   label: string;
   address: string;
   location: string;
+  style?: StyleProp<ViewStyle>;
 };
 
-const PlaceCta: React.FC<PlaceCtaProps> = ({label, address, location}) => {
+const PlaceCta: React.FC<PlaceCtaProps> = ({
+  label,
+  address,
+  location,
+  style,
+}) => {
   return (
-    <>
+    <View style={style}>
       <View style={styles.imageContainer}>
         <View style={styles.label}>
           <Text>{label}</Text>
@@ -23,7 +29,7 @@ const PlaceCta: React.FC<PlaceCtaProps> = ({label, address, location}) => {
 
       <Text style={styles.address}>{address}</Text>
       <Text style={styles.location}>{location}</Text>
-    </>
+    </View>
   );
 };
 
@@ -31,13 +37,12 @@ export default PlaceCta;
 
 const styles = StyleSheet.create({
   imageContainer: {
-    width: 275,
     height: 150,
   },
   image: {
     borderRadius: 8,
-    width: 275,
-    height: 150,
+    width: '100%',
+    height: '100%',
     resizeMode: 'cover',
   },
   label: {
@@ -52,10 +57,10 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   address: {
-    marginTop: 20,
+    marginTop: 8,
   },
   location: {
-    marginTop: 8,
+    marginTop: 4,
     color: '#858585',
   },
 });
