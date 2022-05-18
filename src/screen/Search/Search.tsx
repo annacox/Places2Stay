@@ -6,6 +6,16 @@ import Text from 'component/base/Text';
 import mockData from './searchMockData';
 
 const Search: React.FC = () => {
+  const [searchInput, setSearchInput] = React.useState('');
+  const [searchResult, setSearchResult] = React.useState(mockData.cities);
+
+  React.useEffect(() => {
+    const filteredCities = mockData.cities.filter(cityName =>
+      cityName.toLowerCase().includes(searchInput.toLowerCase()),
+    );
+    setSearchResult(filteredCities);
+  }, [searchInput]);
+
   return (
     <SafeAreaView>
       <View>
@@ -14,9 +24,10 @@ const Search: React.FC = () => {
           placeholder="Where are you going?"
           placeholderTextColor="#858585"
           textAlign="center"
+          onChangeText={setSearchInput}
         />
         <View style={styles.list}>
-          {mockData.cities.map(city => (
+          {searchResult.map(city => (
             <View style={styles.listItem}>
               <Text variant="bodyLarge">{city}</Text>
             </View>
