@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 
 import Text from 'component/base/Text';
+import Icon from 'component/base/Icon';
 
 import mockData from './searchMockData';
 
@@ -36,7 +37,10 @@ const Search: React.FC = () => {
         <View style={styles.list}>
           {searchResult.map((city, index) => (
             <View key={index} style={styles.listItem}>
-              <Text variant="bodyLarge">{city}</Text>
+              <Icon name="place" color="#4169E1" />
+              <Text variant="bodyLarge" style={styles.cityName}>
+                {city}
+              </Text>
             </View>
           ))}
         </View>
@@ -65,5 +69,10 @@ const styles = StyleSheet.create({
   },
   listItem: {
     marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cityName: {
+    marginLeft: 8,
   },
 });
