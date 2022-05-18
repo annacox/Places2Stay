@@ -15,8 +15,10 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
 }) => {
   return (
     <View style={style}>
-      <Text style={styles.title}>{title}</Text>
-      <Text style={styles.description}>{description}</Text>
+      <Text variant="heading" style={styles.title}>
+        {title}
+      </Text>
+      <Text>{description}</Text>
     </View>
   );
 };
@@ -25,12 +27,6 @@ export default SectionHeader;
 
 const styles = StyleSheet.create({
   title: {
-    fontSize: 24,
-    lineHeight: 29,
     marginBottom: 8,
-  },
-  description: {
-    fontSize: 12,
-    lineHeight: 15,
   },
 });

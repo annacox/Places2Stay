@@ -19,9 +19,11 @@ const DetailCard: React.FC<DetailCardProps> = ({label, items, style}) => {
     <View style={[styles.container, style]}>
       <View style={styles.headerContainer}>
         <View style={styles.label}>
-          <Text>{label}</Text>
+          <Text color="#FFFFFF">{label}</Text>
         </View>
-        <Text style={styles.ellipses}>•••</Text>
+        <Text color="#4169E1" style={styles.ellipses}>
+          •••
+        </Text>
       </View>
       {items.map((item, index) => (
         <View key={index} style={styles.row}>

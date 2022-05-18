@@ -35,7 +35,9 @@ const PlaceCard: React.FC<PlaceCardProps> = ({
       </View>
 
       <Text style={styles.address}>{address}</Text>
-      <Text style={styles.location}>{location}</Text>
+      <Text color="#858585" style={styles.location}>
+        {location}
+      </Text>
     </View>
   );
 };
@@ -68,6 +70,5 @@ const styles = StyleSheet.create({
   },
   location: {
     marginTop: 4,
-    color: '#858585',
   },
 });

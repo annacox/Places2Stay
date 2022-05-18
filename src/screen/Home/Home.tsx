@@ -23,7 +23,9 @@ const Home: React.FC = () => {
         ListHeaderComponent={
           <>
             <View style={[styles.searchContainer, styles.bottomSpacing]}>
-              <Text style={styles.searchPlaceholder}>Try 'Boston'</Text>
+              <Text variant="bodyLarge" color="#858585">
+                Try 'Boston'
+              </Text>
             </View>
             <SectionHeader
               title={mockData.sections.placeCtas.title}
@@ -44,10 +46,10 @@ const Home: React.FC = () => {
         data={mockData.sections.placeCtas.places}
         ListFooterComponent={
           <>
-            <Text style={{fontSize: 24, lineHeight: 29, marginBottom: 12}}>
+            <Text variant="heading" style={styles.footerHeading}>
               {mockData.sections.cityCtas.title}
             </Text>
-            <ScrollView horizontal style={{paddingBottom: 16}}>
+            <ScrollView horizontal style={styles.carousel}>
               {mockData.sections.cityCtas.places.map(city => (
                 <CityCard
                   key={city.id}
@@ -77,10 +79,6 @@ const styles = StyleSheet.create({
   rightSpacing: {
     marginRight: 24,
   },
-  searchPlaceholder: {
-    fontSize: 16,
-    lineHeight: 20,
-  },
   searchContainer: {
     borderWidth: 1,
     borderColor: 'rgba(0, 0, 0, 0.19)',
@@ -88,5 +86,11 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  footerHeading: {
+    marginBottom: 12,
+  },
+  carousel: {
+    paddingBottom: 16,
   },
 });

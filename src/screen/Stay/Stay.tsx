@@ -13,13 +13,13 @@ const Stay: React.FC = () => {
       <Image source={mockData.image} style={styles.image} />
       <View style={styles.container}>
         <View style={styles.headerSpacing}>
-          <Text style={[styles.heading, styles.textSpacing]}>
+          <Text variant="heading" style={styles.textSpacing}>
             {mockData.title}
           </Text>
-          <Text style={[styles.body, styles.textSpacing]}>
+          <Text color="#8C8C8C" style={styles.textSpacing}>
             {mockData.location}
           </Text>
-          <Text style={styles.body}>{mockData.dates}</Text>
+          <Text color="#8C8C8C">{mockData.dates}</Text>
         </View>
 
         {mockData.details.map((detail, index) => (
@@ -46,13 +46,6 @@ const styles = StyleSheet.create({
   container: {
     paddingHorizontal: 24,
     paddingTop: 16,
-  },
-  heading: {
-    fontSize: 24,
-    lineHeight: 29,
-  },
-  body: {
-    color: '#858585',
   },
   headerSpacing: {
     marginBottom: 24,
