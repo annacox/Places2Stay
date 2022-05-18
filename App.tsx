@@ -11,12 +11,16 @@
 import React from 'react';
 import {SafeAreaView} from 'react-native';
 
-import Text from 'component/base/Text';
+import Home from 'screen/Home';
+import Stay from 'screen/Stay';
+import Search from 'screen/Search';
 
 const App: React.FC = () => {
   return (
     <SafeAreaView>
-      <Text>Hello MetaLab</Text>
+      {/* <Home /> */}
+      {/* <Stay /> */}
+      <Search />
     </SafeAreaView>
   );
 };
