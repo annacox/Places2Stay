@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {SafeAreaView, View, TextInput, StyleSheet} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  TextInput,
+  StyleSheet,
+  Pressable,
+  Keyboard,
+} from 'react-native';
 
 import Text from 'component/base/Text';
 
@@ -18,7 +25,7 @@ const Search: React.FC = () => {
 
   return (
     <SafeAreaView>
-      <View>
+      <Pressable onPress={Keyboard.dismiss}>
         <TextInput
           style={styles.input}
           placeholder="Where are you going?"
@@ -27,13 +34,13 @@ const Search: React.FC = () => {
           onChangeText={setSearchInput}
         />
         <View style={styles.list}>
-          {searchResult.map(city => (
-            <View style={styles.listItem}>
+          {searchResult.map((city, index) => (
+            <View key={index} style={styles.listItem}>
               <Text variant="bodyLarge">{city}</Text>
             </View>
           ))}
         </View>
-      </View>
+      </Pressable>
     </SafeAreaView>
   );
 };
