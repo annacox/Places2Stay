@@ -5,6 +5,7 @@ import {
   FlatList,
   View,
   ScrollView,
+  Animated,
 } from 'react-native';
 
 import Text from 'component/base/Text';
@@ -16,17 +17,34 @@ import PlaceCard from './component/PlaceCard';
 import CityCard from './component/CityCard';
 
 const Home: React.FC = () => {
+  const animation = React.useRef(new Animated.Value(0));
+
+  const handleScroll = Animated.event(
+    [{nativeEvent: {contentOffset: {y: animation.current}}}],
+    {useNativeDriver: true},
+  );
+
+  const animatedSearchBar = (
+    <Animated.View
+      style={[
+        styles.searchContainer,
+        styles.bottomSpacing,
+        {transform: [{translateY: animation.current}]},
+      ]}>
+      <Text variant="bodyLarge" color="#858585">
+        Try 'Boston'
+      </Text>
+    </Animated.View>
+  );
+
   return (
     <SafeAreaView>
-      <FlatList
+      <Animated.FlatList
         style={styles.container}
+        onScroll={handleScroll}
         ListHeaderComponent={
           <>
-            <View style={[styles.searchContainer, styles.bottomSpacing]}>
-              <Text variant="bodyLarge" color="#858585">
-                Try 'Boston'
-              </Text>
-            </View>
+            {animatedSearchBar}
             <SectionHeader
               title={mockData.sections.placeCtas.title}
               description={mockData.sections.placeCtas.description}
@@ -86,6 +104,8 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
+    zIndex: 1,
+    backgroundColor: '#FFFFFF',
   },
   footerHeading: {
     marginBottom: 12,
