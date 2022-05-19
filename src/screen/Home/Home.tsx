@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  FlatList,
-  View,
-  ScrollView,
-  Animated,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView, Animated} from 'react-native';
 
 import Text from 'component/base/Text';
 
@@ -39,47 +32,38 @@ const Home: React.FC = () => {
 
   return (
     <SafeAreaView>
-      <Animated.FlatList
-        style={styles.container}
-        onScroll={handleScroll}
-        ListHeaderComponent={
-          <>
-            {animatedSearchBar}
-            <SectionHeader
-              title={mockData.sections.placeCtas.title}
-              description={mockData.sections.placeCtas.description}
-              style={styles.bottomSpacing}
-            />
-          </>
-        }
-        renderItem={({item}) => (
-          <PlaceCard
-            image={item.image}
-            label={item.imageLabel}
-            address={item.title}
-            location={item.location}
+      <Animated.ScrollView style={styles.container} onScroll={handleScroll}>
+        <>
+          {animatedSearchBar}
+          <SectionHeader
+            title={mockData.sections.placeCtas.title}
+            description={mockData.sections.placeCtas.description}
             style={styles.bottomSpacing}
           />
-        )}
-        data={mockData.sections.placeCtas.places}
-        ListFooterComponent={
-          <>
-            <Text variant="heading" style={styles.footerHeading}>
-              {mockData.sections.cityCtas.title}
-            </Text>
-            <ScrollView horizontal style={styles.carousel}>
-              {mockData.sections.cityCtas.places.map(city => (
-                <CityCard
-                  key={city.id}
-                  image={city.image}
-                  name={city.title}
-                  style={styles.rightSpacing}
-                />
-              ))}
-            </ScrollView>
-          </>
-        }
-      />
+          {mockData.sections.placeCtas.places.map(item => (
+            <PlaceCard
+              image={item.image}
+              label={item.imageLabel}
+              address={item.title}
+              location={item.location}
+              style={styles.bottomSpacing}
+            />
+          ))}
+          <Text variant="heading" style={styles.footerHeading}>
+            {mockData.sections.cityCtas.title}
+          </Text>
+          <ScrollView horizontal style={styles.carousel}>
+            {mockData.sections.cityCtas.places.map(city => (
+              <CityCard
+                key={city.id}
+                image={city.image}
+                name={city.title}
+                style={styles.rightSpacing}
+              />
+            ))}
+          </ScrollView>
+        </>
+      </Animated.ScrollView>
     </SafeAreaView>
   );
 };
