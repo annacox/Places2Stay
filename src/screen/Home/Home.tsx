@@ -40,12 +40,13 @@ const Home: React.FC = () => {
             description={mockData.sections.placeCtas.description}
             style={styles.bottomSpacing}
           />
-          {mockData.sections.placeCtas.places.map(item => (
+          {mockData.sections.placeCtas.places.map(place => (
             <PlaceCard
-              image={item.image}
-              label={item.imageLabel}
-              address={item.title}
-              location={item.location}
+              key={place.id}
+              image={place.image}
+              label={place.imageLabel}
+              address={place.title}
+              location={place.location}
               style={styles.bottomSpacing}
             />
           ))}
