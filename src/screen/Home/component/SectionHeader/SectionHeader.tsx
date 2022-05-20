@@ -8,6 +8,7 @@ type SectionHeaderProps = {
   description?: string;
   style?: StyleProp<ViewStyle>;
 };
+
 const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   description,

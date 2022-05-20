@@ -10,6 +10,7 @@ import {
 
 import Text from 'component/base/Text';
 import Icon from 'component/base/Icon';
+import Toggle from 'component/base/Toggle';
 
 import mockData from './searchMockData';
 
@@ -33,6 +34,11 @@ const Search: React.FC = () => {
           placeholderTextColor="#858585"
           textAlign="center"
           onChangeText={setSearchInput}
+        />
+        <Toggle
+          style={styles.toggle}
+          leftLabel="Calendar"
+          rightLabel="I'm flexible"
         />
         <View style={styles.list}>
           {searchResult.map((city, index) => (
@@ -63,6 +69,9 @@ const styles = StyleSheet.create({
     fontFamily: 'EncodeSans-Regular',
     fontSize: 16,
     lineHeight: 20,
+  },
+  toggle: {
+    marginVertical: 32,
   },
   list: {
     marginHorizontal: 72,
