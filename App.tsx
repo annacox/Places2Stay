@@ -17,12 +17,12 @@ import Stay from 'screen/Stay';
 import Search from 'screen/Search';
 import Icon from 'component/base/Icon';
 
-const Tab = createBottomTabNavigator();
+const {Navigator, Screen} = createBottomTabNavigator();
 
 const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator
+      <Navigator
         screenOptions={({route}) => ({
           tabBarIcon: ({color}) => {
             let iconName;
@@ -41,10 +41,10 @@ const App: React.FC = () => {
           tabBarShowLabel: false,
           headerShown: false,
         })}>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Stay" component={Stay} />
-        <Tab.Screen name="Search" component={Search} />
-      </Tab.Navigator>
+        <Screen name="Home" component={Home} />
+        <Screen name="Stay" component={Stay} />
+        <Screen name="Search" component={Search} />
+      </Navigator>
     </NavigationContainer>
   );
 };
