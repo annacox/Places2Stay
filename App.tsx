@@ -11,40 +11,48 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from 'screen/Home';
 import Stay from 'screen/Stay';
 import Search from 'screen/Search';
 import Icon from 'component/base/Icon';
 
-const {Navigator, Screen} = createBottomTabNavigator();
+const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
+
+const TabScreen: React.FC = () => {
+  return (
+    <Tab.Navigator
+      screenOptions={({route}) => ({
+        tabBarIcon: ({color}) => {
+          let iconName;
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Stay') {
+            iconName = 'calendar';
+          }
+
+          return <Icon name={iconName} size="large" color={color} />;
+        },
+        tabBarActiveTintColor: '#000000',
+        tabBarInactiveTintColor: '#858585',
+        tabBarShowLabel: false,
+        headerShown: false,
+      })}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Stay" component={Stay} />
+    </Tab.Navigator>
+  );
+};
 
 const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({color}) => {
-            let iconName;
-            if (route.name === 'Home') {
-              iconName = 'home';
-            } else if (route.name === 'Stay') {
-              iconName = 'calendar';
-            } else if (route.name === 'Search') {
-              iconName = 'search';
-            }
-
-            return <Icon name={iconName} size="large" color={color} />;
-          },
-          tabBarActiveTintColor: '#000000',
-          tabBarInactiveTintColor: '#858585',
-          tabBarShowLabel: false,
-          headerShown: false,
-        })}>
-        <Screen name="Home" component={Home} />
-        <Screen name="Stay" component={Stay} />
-        <Screen name="Search" component={Search} />
-      </Navigator>
+      <Stack.Navigator>
+        <Stack.Screen name="Tab" component={TabScreen} />
+        <Stack.Screen name="Search" component={Search} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };

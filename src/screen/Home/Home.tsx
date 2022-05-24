@@ -1,5 +1,12 @@
 import * as React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, Animated} from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  ScrollView,
+  Animated,
+  Pressable,
+} from 'react-native';
+import {NavigationProp} from '@react-navigation/native';
 
 import Text from 'component/base/Text';
 
@@ -9,7 +16,11 @@ import SectionHeader from './component/SectionHeader';
 import PlaceCard from './component/PlaceCard';
 import CityCard from './component/CityCard';
 
-const Home: React.FC = () => {
+type HomeProps = {
+  navigation: NavigationProp<any, any>;
+};
+
+const Home: React.FC<HomeProps> = ({navigation}) => {
   const animation = React.useRef(new Animated.Value(0));
 
   const handleScroll = Animated.event(
@@ -20,13 +31,16 @@ const Home: React.FC = () => {
   const animatedSearchBar = (
     <Animated.View
       style={[
-        styles.searchContainer,
         styles.bottomSpacing,
         {transform: [{translateY: animation.current}]},
       ]}>
-      <Text variant="bodyLarge" color="#858585">
-        Try 'Boston'
-      </Text>
+      <Pressable
+        style={styles.searchContainer}
+        onPress={() => navigation.navigate('Search')}>
+        <Text variant="bodyLarge" color="#858585">
+          Try 'Boston'
+        </Text>
+      </Pressable>
     </Animated.View>
   );
 
