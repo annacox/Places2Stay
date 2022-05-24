@@ -51,7 +51,11 @@ const App: React.FC = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Tab" component={TabScreen} />
-        <Stack.Screen name="Search" component={Search} />
+        <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{presentation: 'modal'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
