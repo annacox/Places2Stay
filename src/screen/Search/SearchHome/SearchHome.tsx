@@ -7,14 +7,18 @@ import {
   Pressable,
   Keyboard,
 } from 'react-native';
+import {NavigationProp} from '@react-navigation/native';
 
 import Text from 'component/base/Text';
 import Icon from 'component/base/Icon';
-import Toggle from 'component/base/Toggle';
 
 import mockData from './searchMockData';
 
-const Search: React.FC = () => {
+type SearchHomeProps = {
+  navigation: NavigationProp<any, any>;
+};
+
+const SearchHome: React.FC<SearchHomeProps> = ({navigation}) => {
   const [searchInput, setSearchInput] = React.useState('');
   const [searchResult, setSearchResult] = React.useState(mockData.cities);
 
@@ -35,18 +39,16 @@ const Search: React.FC = () => {
           textAlign="center"
           onChangeText={setSearchInput}
         />
-        <Toggle
-          style={styles.toggle}
-          leftLabel="Calendar"
-          rightLabel="I'm flexible"
-        />
         <View style={styles.list}>
           {searchResult.map((city, index) => (
             <View key={index} style={styles.listItem}>
               <Icon name="place" color="#4169E1" />
-              <Text variant="bodyLarge" style={styles.cityName}>
-                {city}
-              </Text>
+              <Pressable
+                onPress={() => navigation.navigate('SearchDates', {city})}>
+                <Text variant="bodyLarge" style={styles.cityName}>
+                  {city}
+                </Text>
+              </Pressable>
             </View>
           ))}
         </View>
@@ -55,7 +57,7 @@ const Search: React.FC = () => {
   );
 };
 
-export default Search;
+export default SearchHome;
 
 const styles = StyleSheet.create({
   input: {
@@ -69,9 +71,6 @@ const styles = StyleSheet.create({
     fontFamily: 'EncodeSans-Regular',
     fontSize: 16,
     lineHeight: 20,
-  },
-  toggle: {
-    marginVertical: 32,
   },
   list: {
     marginHorizontal: 72,

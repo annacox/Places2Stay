@@ -16,11 +16,23 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import Home from 'screen/Home';
 import Stay from 'screen/Stay';
-import Search from 'screen/Search';
+import SearchHome from 'screen/Search/SearchHome';
+import SearchDates from 'screen/Search/SearchDates';
+import SearchParticipants from 'screen/Search/SearchParticipants';
 import Icon from 'component/base/Icon';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
+
+const SearchStack: React.FC = () => {
+  return (
+    <Stack.Navigator initialRouteName="SearchHome">
+      <Stack.Screen name="SearchHome" component={SearchHome} />
+      <Stack.Screen name="SearchDates" component={SearchDates} />
+      <Stack.Screen name="SearchParticipants" component={SearchParticipants} />
+    </Stack.Navigator>
+  );
+};
 
 const homeOptions = {
   tabBarIcon: ({color}: any) => {
@@ -66,7 +78,7 @@ const App: React.FC = () => {
         <Stack.Screen name="Tab" component={TabScreen} />
         <Stack.Screen
           name="Search"
-          component={Search}
+          component={SearchStack}
           options={{presentation: 'modal'}}
         />
       </Stack.Navigator>
