@@ -9,6 +9,7 @@
  */
 
 import React from 'react';
+import {StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -40,7 +41,17 @@ const TabScreen: React.FC = () => {
         tabBarActiveTintColor: '#000000',
         tabBarInactiveTintColor: '#858585',
         tabBarShowLabel: false,
-        headerShown: false,
+        headerTitle: '',
+        headerLeft: () => (
+          <View style={styles.header}>
+            <Icon name="notification" size="large" />
+          </View>
+        ),
+        headerRight: () => (
+          <View style={styles.header}>
+            <Icon name="avatar" size="large" />
+          </View>
+        ),
       }}>
       <Tab.Screen name="Home" component={Home} options={homeOptions} />
       <Tab.Screen name="Stay" component={Stay} options={stayOptions} />
@@ -51,7 +62,7 @@ const TabScreen: React.FC = () => {
 const App: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Tab" component={TabScreen} />
         <Stack.Screen
           name="Search"
@@ -64,3 +75,9 @@ const App: React.FC = () => {
 };
 
 export default App;
+
+const styles = StyleSheet.create({
+  header: {
+    marginHorizontal: 24,
+  },
+});
