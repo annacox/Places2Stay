@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
     <Animated.View
       style={[
         styles.bottomSpacing,
-        {transform: [{translateY: animation.current}]},
+        {zIndex: 1, transform: [{translateY: animation.current}]},
       ]}>
       <Pressable
         style={styles.searchContainer}
@@ -103,7 +103,6 @@ const styles = StyleSheet.create({
     height: 60,
     justifyContent: 'center',
     alignItems: 'center',
-    zIndex: 1,
     backgroundColor: '#FFFFFF',
   },
   footerHeading: {
