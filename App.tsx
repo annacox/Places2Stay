@@ -21,27 +21,29 @@ import Icon from 'component/base/Icon';
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
+const homeOptions = {
+  tabBarIcon: ({color}: any) => {
+    return <Icon name="home" size="large" color={color} />;
+  },
+};
+
+const stayOptions = {
+  tabBarIcon: ({color}: any) => {
+    return <Icon name="calendar" size="large" color={color} />;
+  },
+};
+
 const TabScreen: React.FC = () => {
   return (
     <Tab.Navigator
-      screenOptions={({route}) => ({
-        tabBarIcon: ({color}) => {
-          let iconName;
-          if (route.name === 'Home') {
-            iconName = 'home';
-          } else if (route.name === 'Stay') {
-            iconName = 'calendar';
-          }
-
-          return <Icon name={iconName} size="large" color={color} />;
-        },
+      screenOptions={{
         tabBarActiveTintColor: '#000000',
         tabBarInactiveTintColor: '#858585',
         tabBarShowLabel: false,
         headerShown: false,
-      })}>
-      <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Stay" component={Stay} />
+      }}>
+      <Tab.Screen name="Home" component={Home} options={homeOptions} />
+      <Tab.Screen name="Stay" component={Stay} options={stayOptions} />
     </Tab.Navigator>
   );
 };
