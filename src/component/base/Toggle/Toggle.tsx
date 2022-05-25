@@ -10,23 +10,34 @@ import {
 
 import Text from 'component/base/Text';
 
+type ToggleValueType = {
+  label: string;
+  value: string;
+};
+
 type ToggleProps = {
-  leftLabel: string;
-  rightLabel: string;
+  left: ToggleValueType;
+  right: ToggleValueType;
+  onPress: (value: string) => void;
   style?: StyleProp<ViewStyle>;
 };
 
-const Toggle: React.FC<ToggleProps> = ({leftLabel, rightLabel, style}) => {
-  const [value, setToValue] = React.useState(0);
+const Toggle: React.FC<ToggleProps> = ({left, right, onPress, style}) => {
+  const [value, setToValue] = React.useState(left.value);
   const animation = React.useRef(new Animated.Value(0)).current;
 
   React.useEffect(() => {
     Animated.timing(animation, {
-      toValue: value,
+      toValue: value === 'dates' ? 0 : 1,
       duration: 500,
       useNativeDriver: true,
     }).start();
   }, [value, animation]);
+
+  const handlePress = (toggleValue: string) => {
+    setToValue(toggleValue);
+    onPress(toggleValue);
+  };
 
   return (
     <View style={[styles.container, style]}>
@@ -45,11 +56,15 @@ const Toggle: React.FC<ToggleProps> = ({leftLabel, rightLabel, style}) => {
           },
         ]}
       />
-      <Pressable style={styles.leftLabel} onPress={() => setToValue(0)}>
-        <Text>{leftLabel}</Text>
+      <Pressable
+        style={styles.leftLabel}
+        onPress={() => handlePress(left.value)}>
+        <Text>{left.label}</Text>
       </Pressable>
-      <Pressable style={styles.rightLabel} onPress={() => setToValue(1)}>
-        <Text>{rightLabel}</Text>
+      <Pressable
+        style={styles.rightLabel}
+        onPress={() => handlePress(right.value)}>
+        <Text>{right.label}</Text>
       </Pressable>
     </View>
   );

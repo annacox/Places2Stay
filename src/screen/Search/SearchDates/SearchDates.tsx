@@ -12,18 +12,58 @@ type SearchDatesProps = {
   navigation: NavigationProp<any, any>;
 };
 
+const LENGTH_OPTIONS = ['Weekend', 'Week', 'Month'];
+const MONTH_OPTIONS = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 const SearchDates: React.FC<SearchDatesProps> = ({route, navigation}) => {
+  const [activeView, setActiveView] = React.useState('dates'); // dates || flexible
+  const [length, setLength] = React.useState(LENGTH_OPTIONS[0]);
+  const [month, setMonth] = React.useState(MONTH_OPTIONS[0]);
+
   const {city} = route.params;
+
+  const handleTogglePress = (value: string) => {
+    setActiveView(value);
+  };
+
   return (
     <SafeAreaView>
       <View style={styles.container}>
         <Text variant="bodyLarge">{city}</Text>
         <Toggle
           style={styles.toggle}
-          leftLabel="Calendar"
-          rightLabel="I'm flexible"
+          left={{label: 'Calendar', value: 'dates'}}
+          right={{label: "I'm flexible", value: 'flexible'}}
+          onPress={handleTogglePress}
         />
-        <Calendar onPress={() => {}} />
+        {activeView === 'dates' ? (
+          <Calendar onPress={() => {}} />
+        ) : (
+          <>
+            <View>
+              <Text variant="bodyLarge">Stay for a </Text>
+              <Text variant="bodyLargeBold">{length}</Text>
+            </View>
+            <View>
+              <Text variant="bodyLarge">Go in </Text>
+              <Text variant="bodyLargeBold">{month}</Text>
+            </View>
+          </>
+        )}
+
         <View style={styles.buttonContainer}>
           <Button
             variant="secondary"
