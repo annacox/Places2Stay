@@ -71,14 +71,24 @@ const TabScreen: React.FC = () => {
   );
 };
 
+const config = {
+  screens: {
+    Tab: {
+      screens: {
+        Home: 'home',
+        Stay: 'stay',
+      },
+    },
+    Search: 'search',
+  },
+};
+
 const App: React.FC = () => {
   return (
     <NavigationContainer
       linking={{
         prefixes: ['places2stay://'],
-        config: {
-          screens: {Search: 'search'},
-        },
+        config,
       }}>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Tab" component={TabScreen} />
