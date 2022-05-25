@@ -5,6 +5,7 @@ import {NavigationProp, RouteProp} from '@react-navigation/native';
 import Text from 'component/base/Text';
 import Toggle from 'component/base/Toggle';
 import Button from 'component/base/Button';
+import Calendar from 'component/base/Calendar';
 
 type SearchDatesProps = {
   route: RouteProp<{params: {city: string}}>;
@@ -22,6 +23,7 @@ const SearchDates: React.FC<SearchDatesProps> = ({route, navigation}) => {
           leftLabel="Calendar"
           rightLabel="I'm flexible"
         />
+        <Calendar onPress={() => {}} />
         <View style={styles.buttonContainer}>
           <Button
             variant="secondary"
@@ -43,14 +45,19 @@ export default SearchDates;
 
 const styles = StyleSheet.create({
   container: {
+    paddingTop: 32,
     paddingHorizontal: 24,
     alignItems: 'center',
+    height: '100%',
   },
   toggle: {
     marginVertical: 32,
   },
   buttonContainer: {
+    bottom: 0,
+    position: 'absolute',
     width: '100%',
+    marginTop: 48,
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
