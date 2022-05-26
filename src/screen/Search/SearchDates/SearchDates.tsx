@@ -68,12 +68,12 @@ const SearchDates: React.FC<SearchDatesProps> = ({route, navigation}) => {
           <Button
             variant="secondary"
             label="Skip"
-            onPress={() => navigation.navigate('SearchParticipants')}
+            onPress={() => navigation.navigate('SearchGuests')}
           />
           <Button
             variant="primary"
             label="Next"
-            onPress={() => navigation.navigate('SearchParticipants')}
+            onPress={() => navigation.navigate('SearchGuests')}
           />
         </View>
       </View>

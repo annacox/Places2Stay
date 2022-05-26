@@ -3,7 +3,7 @@ import {View} from 'react-native';
 
 import Text from 'component/base/Text';
 
-const SearchParticipants: React.FC = () => {
+const SearchGuests: React.FC = () => {
   return (
     <View>
       <Text>Dates</Text>
@@ -11,4 +11,4 @@ const SearchParticipants: React.FC = () => {
   );
 };
 
-export default SearchParticipants;
+export default SearchGuests;

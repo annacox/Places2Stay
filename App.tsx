@@ -18,7 +18,7 @@ import Home from 'screen/Home';
 import Stay from 'screen/Stay';
 import SearchHome from 'screen/Search/SearchHome';
 import SearchDates from 'screen/Search/SearchDates';
-import SearchParticipants from 'screen/Search/SearchParticipants';
+import SearchGuests from 'screen/Search/SearchGuests';
 import Icon from 'component/base/Icon';
 
 const Tab = createBottomTabNavigator();
@@ -29,7 +29,7 @@ const SearchStack: React.FC = () => {
     <Stack.Navigator initialRouteName="SearchHome">
       <Stack.Screen name="SearchHome" component={SearchHome} />
       <Stack.Screen name="SearchDates" component={SearchDates} />
-      <Stack.Screen name="SearchParticipants" component={SearchParticipants} />
+      <Stack.Screen name="SearchGuests" component={SearchGuests} />
     </Stack.Navigator>
   );
 };
