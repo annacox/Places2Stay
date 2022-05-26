@@ -41,13 +41,15 @@ const SearchHome: React.FC<SearchHomeProps> = ({navigation}) => {
             onChangeText={setSearchInput}
           />
           <View style={styles.list}>
-            {searchResult.map((city, index) => (
+            {searchResult.map((cityName, index) => (
               <View key={index} style={styles.listItem}>
                 <Icon name="place" color="#4169E1" />
                 <Pressable
-                  onPress={() => navigation.navigate('SearchDates', {city})}>
+                  onPress={() =>
+                    navigation.navigate('SearchDates', {location: cityName})
+                  }>
                   <Text variant="bodyLarge" style={styles.cityName}>
-                    {city}
+                    {cityName}
                   </Text>
                 </Pressable>
               </View>

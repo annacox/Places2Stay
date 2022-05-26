@@ -8,7 +8,7 @@ import Button from 'component/base/Button';
 import Calendar from 'component/base/Calendar';
 
 type SearchDatesProps = {
-  route: RouteProp<{params: {city: string}}>;
+  route: RouteProp<{params: {location: string}}>;
   navigation: NavigationProp<any, any>;
 };
 
@@ -33,7 +33,7 @@ const SearchDates: React.FC<SearchDatesProps> = ({route, navigation}) => {
   const [length, setLength] = React.useState(LENGTH_OPTIONS[0]);
   const [month, setMonth] = React.useState(MONTH_OPTIONS[0]);
 
-  const {city} = route.params;
+  const {location} = route.params;
 
   const handleTogglePress = (value: string) => {
     setActiveView(value);
@@ -42,7 +42,7 @@ const SearchDates: React.FC<SearchDatesProps> = ({route, navigation}) => {
   return (
     <SafeAreaView>
       <View style={styles.container}>
-        <Text variant="bodyLarge">{city}</Text>
+        <Text variant="bodyLarge">{location}</Text>
         <Toggle
           style={styles.toggle}
           left={{label: 'Calendar', value: 'dates'}}
@@ -68,12 +68,12 @@ const SearchDates: React.FC<SearchDatesProps> = ({route, navigation}) => {
           <Button
             variant="secondary"
             label="Skip"
-            onPress={() => navigation.navigate('SearchGuests')}
+            onPress={() => navigation.navigate('SearchGuests', {location})}
           />
           <Button
             variant="primary"
             label="Next"
-            onPress={() => navigation.navigate('SearchGuests')}
+            onPress={() => navigation.navigate('SearchGuests', {location})}
           />
         </View>
       </View>

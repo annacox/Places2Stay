@@ -6,7 +6,7 @@ import {
   Animated,
   Pressable,
 } from 'react-native';
-import {NavigationProp} from '@react-navigation/native';
+import {NavigationProp, RouteProp} from '@react-navigation/native';
 
 import Text from 'component/base/Text';
 
@@ -17,11 +17,21 @@ import PlaceCard from './component/PlaceCard';
 import CityCard from './component/CityCard';
 
 type HomeProps = {
+  route: RouteProp<{params: {location: string}}>;
   navigation: NavigationProp<any, any>;
 };
 
-const Home: React.FC<HomeProps> = ({navigation}) => {
+const Home: React.FC<HomeProps> = ({route, navigation}) => {
+  const location = route?.params?.location;
+
   const animation = React.useRef(new Animated.Value(0));
+
+  let filteredPlaces = mockData.sections.placeCtas.places;
+  if (location) {
+    filteredPlaces = mockData.sections.placeCtas.places.filter(place =>
+      place.location.toLowerCase().includes(location.toLowerCase()),
+    );
+  }
 
   const handleScroll = Animated.event(
     [{nativeEvent: {contentOffset: {y: animation.current}}}],
@@ -50,11 +60,16 @@ const Home: React.FC<HomeProps> = ({navigation}) => {
         <>
           {animatedSearchBar}
           <SectionHeader
-            title={mockData.sections.placeCtas.title}
+            title={
+              location
+                ? `${filteredPlaces.length} Places in ${location}`
+                : mockData.sections.placeCtas.title
+            }
             description={mockData.sections.placeCtas.description}
             style={styles.bottomSpacing}
           />
-          {mockData.sections.placeCtas.places.map(place => (
+
+          {filteredPlaces.map(place => (
             <PlaceCard
               key={place.id}
               image={place.image}

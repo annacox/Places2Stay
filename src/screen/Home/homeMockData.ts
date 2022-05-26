@@ -24,14 +24,14 @@ const homeMockData = {
           image: PlaceholderImage,
           imageLabel: 'From $126',
           title: '408 St. Jacques | 1 Br',
-          location: 'Old Montreal, Montreal',
+          location: 'Boston',
         },
         {
           id: 3,
           image: PlaceholderImage,
           imageLabel: 'From $126',
           title: '408 St. Jacques | 1 Br',
-          location: 'Old Montreal, Montreal',
+          location: 'Toronto',
         },
         {
           id: 4,
